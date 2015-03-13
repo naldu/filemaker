@@ -114,21 +114,21 @@ class Parser {
                 $recordObj->addAttribute($key, $values);
             }
            
-            // foreach($record->relatedset as $set) {
-            //     foreach($set->record as $record) {
-            //         foreach($record as $field) {
-            //             $attributes = $field->attributes();
-            //             $key = (string) $attributes['name'];
-            //             if(is_array($field->data)) {
-            //                 $values[$key][] = $field->data;
-            //             } else {
-            //                 $value = (array) $field->data;
-            //                 $values[$key][] = $value[0];
-            //             }
-            //         $recordObj->addAttribute($key, $values[$key]);
-            //         }
-            //     }
-            // }
+            foreach($record->relatedset as $set) {
+                foreach($set->record as $record) {
+                    foreach($record as $field) {
+                        $attributes = $field->attributes();
+                        $key = (string) $attributes['name'];
+                        if(is_array($field->data)) {
+                            $values[$key][] = $field->data;
+                        } else {
+                            $value = (array) $field->data;
+                            $values[$key][] = $value[0];
+                        }
+                    $recordObj->addAttribute($key, $values[$key]);
+                    }
+                }
+            }
             $resultSet->addRecord($recordObj);
         }
 
