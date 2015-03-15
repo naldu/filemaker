@@ -32,10 +32,11 @@ class Response implements IteratorAggregate {
         $this->resultSet = $resultSet;
 
         if(!$this->error->isAllowed()) {
-            throw new FileMakerQueryException(
-                $this->error->message(),
-                $this->error->code()
-            );
+            dd($this->error);
+            // throw new FileMakerQueryException(
+            //     $this->error->message(),
+            //     $this->error->code()
+            // );
         }
     }
 
