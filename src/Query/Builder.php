@@ -344,7 +344,7 @@ class Builder {
                 $value = $value->format('m/d/Y H:i:s');
             }
 
-            $params[urlencode($key)] = urlencode($value);
+            $params[urlencode($key)] = $value;
         }
 
         return $params;
